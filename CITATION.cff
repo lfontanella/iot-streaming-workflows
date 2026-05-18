@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite it as below."
+title: "IoT Streaming Workflows: research prototypes for BIM/openBIM-based building monitoring and data-stream visualization"
+authors:
+  - family-names: Fontanella
+    given-names: Luca
+year: 2026
+repository-code: "https://github.com/lfontanella/iot-streaming-workflows"
+abstract: "Research prototypes and methodological workflows for IoT data-stream visualization in BIM, openBIM and HBIM environments, developed as companion material to a PhD thesis at Università Iuav di Venezia."
+keywords:
+  - BIM
+  - openBIM
+  - HBIM
+  - IoT
+  - digital twin
+  - IFC
+  - MQTT
+  - building performance
+  - heritage buildings
+license: MIT

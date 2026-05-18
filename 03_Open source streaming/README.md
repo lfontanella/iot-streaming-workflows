@@ -1,6 +1,6 @@
 # Open Source Streaming Workflow
 
-This folder documents an open-source workflow developed to test the real-time visualization of environmental sensor data in an IFC-based building model using MQTT, Python, Blender and Bonsai / BlenderBIM.
+This folder documents an open-source workflow developed to test the real-time visualization of environmental sensor data in an IFC-based building model using MQTT, Python, Blender and Bonsai.
 
 The workflow represents an open alternative to proprietary IoT streaming platforms. It explores how sensor data can be transmitted through MQTT, processed with Python and visualized directly inside a BIM/openBIM environment.
 
@@ -45,7 +45,7 @@ The workflow involves:
 - Python;
 - `paho-mqtt`;
 - Blender;
-- Bonsai / BlenderBIM;
+- Bonsai (formerly known as BlenderBIM);
 - IFC-based building model;
 - PMV comfort index calculation.
 

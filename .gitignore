@@ -36,3 +36,7 @@ Thumbs.db
 # Blender backup files
 *.blend1
 *.blend2
+
+# Arduino / Azure credentials
+iot_configs.h
+arduino_secrets.h

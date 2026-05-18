@@ -17,7 +17,7 @@ Python processing
         ↓
 PMV calculation
         ↓
-Blender + Bonsai / BlenderBIM
+Blender + Bonsai / formerly known as BlenderBIM)
         ↓
 IFC model-based visualization
 ```

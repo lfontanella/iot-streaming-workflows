@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# Environment and credentials
+.env
+*.env
+secrets.*
+credentials.*
+config.private.*
+*.key
+*.pem
+
+# Temporary and system files
+*.log
+*.tmp
+*.bak
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# Databases - avoid publishing real local databases
+*.sqlite
+*.sqlite3
+*.db
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Blender backup files
+*.blend1
+*.blend2

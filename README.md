@@ -9,6 +9,7 @@ The repository focuses on IoT-based data-stream visualization workflows, includi
 This repository is part of the digital companion material of the PhD thesis:
 
 **Utilizzo della metodologia BIM (Building Information Modeling) e degli standard openBIM per le analisi e il monitoraggio delle prestazioni termiche di edifici storici**
+
 Use of BIM (Building Information Modelling) methodology and openBIM standards for the analysis and monitoring of the thermal performance of historic buildings
 
 The research investigates how BIM, HBIM, openBIM and IoT-based workflows can support:

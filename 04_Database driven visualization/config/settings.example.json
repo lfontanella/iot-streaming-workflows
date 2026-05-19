@@ -1,0 +1,8 @@
+{
+  "database": "<database-name>",
+  "host": "<database-host>",
+  "user": "<database-user>",
+  "password": "<database-password>",
+  "port": "5432",
+  "table containing records": "<table-name>"
+}

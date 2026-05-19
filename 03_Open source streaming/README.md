@@ -1,6 +1,6 @@
 # Open Source Streaming Workflow
 
-This folder documents an open-source workflow developed to test the real-time visualization of environmental sensor data in an IFC-based building model using MQTT, Python, Blender and Bonsai.
+This folder documents an open-source workflow developed to test the real-time visualization of environmental sensor data in an IFC-based building model using MQTT, Python, Blender and Bonsai / BlenderBIM.
 
 The workflow represents an open alternative to proprietary IoT streaming platforms. It explores how sensor data can be transmitted through MQTT, processed with Python and visualized directly inside a BIM/openBIM environment.
 
@@ -17,7 +17,7 @@ Python processing
         ↓
 PMV calculation
         ↓
-Blender + Bonsai (formerly known as BlenderBIM)
+Blender + Bonsai / BlenderBIM
         ↓
 IFC model-based visualization
 ```
@@ -45,7 +45,7 @@ The workflow involves:
 - Python;
 - `paho-mqtt`;
 - Blender;
-- Bonsai (formerly known as BlenderBIM);
+- Bonsai / BlenderBIM;
 - IFC-based building model;
 - PMV comfort index calculation.
 
@@ -69,7 +69,7 @@ The workflow involves:
 
 ### `mqtt_pmv_calculator.py`
 
-This script subscribes to the MQTT topic containing temperature and relative humidity data.
+This script subscribes to an MQTT topic containing temperature and relative humidity data.
 
 The expected message format is:
 
@@ -88,8 +88,8 @@ Example:
 The script:
 
 1. receives temperature and relative humidity values;
-2. calculates the Predicted Mean Vote (PMV);
-3. publishes the PMV value to the MQTT topic `PMV`.
+2. calculates the Predicted Mean Vote, PMV;
+3. publishes the PMV value to a dedicated MQTT topic.
 
 The PMV calculation uses fixed assumptions for:
 
@@ -120,35 +120,39 @@ The visualization is based on the association between environmental data and IFC
 
 ## MQTT topics
 
-The prototype uses the following MQTT topics:
+The original prototype used the following MQTT topics:
 
 | Topic | Description |
 |---|---|
 | `temperatura_umidita` | Topic used to transmit temperature and relative humidity values. |
 | `PMV` | Topic used to transmit the calculated PMV value. |
 
-For public demonstrations, it is recommended to use unique topic names in order to avoid conflicts with other users on public MQTT brokers.
+For public demonstrations, it is recommended to use more specific topic names in order to avoid conflicts with other users on public MQTT brokers.
 
-Example:
+Recommended example:
 
 ```text
 lfontanella/research/temperature_humidity
 lfontanella/research/pmv
 ```
 
+If a public broker is used, topic names should always be considered non-private.
+
+For controlled experiments or real monitoring scenarios, a local or private MQTT broker is recommended.
+
 ## PMV-based visualization logic
 
 The PMV value is used to assign colors to IFC spaces.
 
-The tested logic is:
+A possible visualization logic is:
 
 | PMV range | Interpretation | Visualization |
 |---|---|---|
-| `-1 <= PMV <= 1` | acceptable comfort range | green |
-| `1 < PMV <= 2` | warm discomfort | orange |
-| `PMV > 3` | hot discomfort | red |
-| `-2 <= PMV < -1` | cool discomfort | light blue |
 | `PMV <= -3` | cold discomfort | blue |
+| `-3 < PMV < -1` | cool discomfort | light blue |
+| `-1 <= PMV <= 1` | acceptable comfort range | green |
+| `1 < PMV <= 3` | warm discomfort | orange |
+| `PMV > 3` | hot discomfort | red |
 
 The thresholds and colors are used here as a research visualization prototype and can be adapted according to the specific comfort assessment framework.
 
@@ -177,6 +181,42 @@ Text_Hum13
 
 These object names must be adapted to the IFC model and Blender scene used in each application.
 
+## Configuration note
+
+The Blender script is not fully generic in its current prototype form. It contains object names that refer to the tested Blender/Bonsai scene.
+
+Before using the script with another IFC model, users must update:
+
+- the list of `IfcSpace` objects to be colored;
+- the names of the text objects used to display temperature and humidity;
+- the MQTT topic names, if different topics are used;
+- the PMV thresholds and color rules, if a different visualization logic is required.
+
+In the tested prototype, these names were manually aligned with the IFC spaces and text objects available in the Blender scene.
+
+## How to use the workflow
+
+A simplified execution sequence is:
+
+1. publish temperature and relative humidity values to the selected MQTT topic;
+2. run `mqtt_pmv_calculator.py` to receive temperature and humidity data and calculate the PMV value;
+3. open the IFC model in Blender with Bonsai / BlenderBIM;
+4. run `blender_mqtt_ifc_visualizer.py` inside Blender;
+5. verify that the object names in the script match the names of the IFC spaces and text objects in the Blender scene;
+6. observe the model-based visualization of environmental and comfort data.
+
+## Requirements
+
+The Python scripts require:
+
+```text
+paho-mqtt
+```
+
+For the Blender script, the package must be available in the Python environment used by Blender.
+
+Depending on the Blender installation, additional configuration may be required to install external Python packages inside Blender's Python environment.
+
 ## Images
 
 The `images` folder includes screenshots documenting:
@@ -184,6 +224,15 @@ The `images` folder includes screenshots documenting:
 - MQTT data reception and Blender visualization;
 - color-based visualization of environmental and comfort data in the IFC model;
 - text labels showing environmental values in the model.
+
+Included screenshots:
+
+```text
+images/mqtt-terminal-blender-overview.jpg
+images/blender-ifc-pmv-visualization.jpg
+```
+
+Before publishing screenshots, local file paths, private usernames or confidential project information should be removed or cropped.
 
 ## Role in the research workflow
 

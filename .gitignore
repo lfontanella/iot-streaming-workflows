@@ -25,7 +25,10 @@ Thumbs.db
 .vscode/
 .idea/
 
-# Databases - avoid publishing real local databases
+# Database-driven workflow credentials and generated data
+settings.json
+data_overall.sql
+local_data/
 *.sqlite
 *.sqlite3
 *.db
@@ -40,3 +43,17 @@ Thumbs.db
 # Arduino / Azure credentials
 iot_configs.h
 arduino_secrets.h
+
+# IFC models and potentially sensitive building data
+*.ifc
+*.ifczip
+
+# Videos may contain sensitive paths, models or database information
+*.mp4
+*.mov
+*.avi
+*.mkv
+
+# Excel files with real sensor/building mappings
+*.xlsx
+!*_template.xlsx

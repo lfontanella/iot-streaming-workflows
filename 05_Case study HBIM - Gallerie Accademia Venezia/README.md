@@ -55,10 +55,7 @@ The workflow supports:
 │   └── blender-material-specific-artwork-alert.jpg
 │
 ├── python/
-│   └── hbim_conservation_threshold_alerts_template.py
-│
-└── logs/
-    └── .gitkeep
+    └── hbim_conservation_threshold_alerts_template.py
 ```
 
 ## Main components
